@@ -6,6 +6,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Displays detailed CampusLife information for a selected category.
+ * Uses a category index and Android resource arrays to update
+ * the icon, title and description without category-specific branching.
+ */
 public class DetailActivity extends AppCompatActivity {
 
     @Override

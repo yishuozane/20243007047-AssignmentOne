@@ -10,6 +10,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Main screen of the CampusLife application.
+ * Displays four campus service categories and handles navigation
+ * to the corresponding detail screen.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -42,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Open the detail screen with the selected category index.
+    /**
+     * Opens DetailActivity for the selected campus category.
+     *
+     * @param categoryIndex index of the selected category (0-3)
+     */
     private void openDetail(int categoryIndex) {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra("category_index", categoryIndex);
