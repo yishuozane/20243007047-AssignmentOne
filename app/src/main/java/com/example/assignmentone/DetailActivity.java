@@ -1,24 +1,30 @@
 package com.example.assignmentone;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class DetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_detail);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        // Receive category index from MainActivity.
+        int categoryIndex = getIntent().getIntExtra("category_index", 0);
+
+        String[] categories = {
+                "Facilities",
+                "Events",
+                "Clubs",
+                "Support"
+        };
+
+        TextView detailTitle = findViewById(R.id.detailTitle);
+
+        // Show the selected category title.
+        detailTitle.setText(categories[categoryIndex]);
     }
 }

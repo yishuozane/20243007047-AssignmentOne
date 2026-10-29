@@ -1,8 +1,8 @@
 package com.example.assignmentone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,8 +22,11 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.main), (v, insets) -> {
                     Insets systemBars = insets.getInsets(
                             WindowInsetsCompat.Type.systemBars());
-                    v.setPadding(systemBars.left, systemBars.top,
-                            systemBars.right, systemBars.bottom);
+                    v.setPadding(
+                            systemBars.left,
+                            systemBars.top,
+                            systemBars.right,
+                            systemBars.bottom);
                     return insets;
                 });
 
@@ -32,20 +35,16 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btnClubs = findViewById(R.id.btnClubs);
         ImageButton btnSupport = findViewById(R.id.btnSupport);
 
-        btnFacilities.setOnClickListener(v ->
-                Toast.makeText(this, "Facilities clicked",
-                        Toast.LENGTH_SHORT).show());
+        btnFacilities.setOnClickListener(v -> openDetail(0));
+        btnEvents.setOnClickListener(v -> openDetail(1));
+        btnClubs.setOnClickListener(v -> openDetail(2));
+        btnSupport.setOnClickListener(v -> openDetail(3));
+    }
 
-        btnEvents.setOnClickListener(v ->
-                Toast.makeText(this, "Events clicked",
-                        Toast.LENGTH_SHORT).show());
-
-        btnClubs.setOnClickListener(v ->
-                Toast.makeText(this, "Clubs clicked",
-                        Toast.LENGTH_SHORT).show());
-
-        btnSupport.setOnClickListener(v ->
-                Toast.makeText(this, "Support clicked",
-                        Toast.LENGTH_SHORT).show());
+    // Open the detail screen with the selected category index.
+    private void openDetail(int categoryIndex) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("category_index", categoryIndex);
+        startActivity(intent);
     }
 }
